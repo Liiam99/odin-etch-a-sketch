@@ -9,6 +9,11 @@ body {
     padding: 0;
 }
 
+.dim-change {
+    padding: 10px;
+    margin: 10px 0px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -18,9 +23,9 @@ body {
 .grid {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vh;
     border: 1px solid black;
+    width: 80vh;
+    height: 80vh;
 }
 
 .row {
