@@ -18,7 +18,8 @@ function drawGrid(dim) {
             const squareDiv = document.createElement('div');
             squareDiv.classList.add('square');
 
-            squareDiv.addEventListener('mouseover', changeSquareColour);
+            squareDiv.addEventListener('mouseover', changeSquareColour,
+                                       {once: true});
 
             rowDiv.appendChild(squareDiv);
         }
@@ -32,11 +33,9 @@ function drawGrid(dim) {
 
 function changeSquareColour(e) {
     const squareDiv = e.target;
-    const randomColour = getRandomHexColour();
+    const randomColour = getRandomColour();
 
-    if (!squareDiv.style.backgroundColor) {
-        squareDiv.style.backgroundColor = `#${randomColour}`;
-    };
+    squareDiv.style.backgroundColor = randomColour;
 }
 
 
@@ -53,10 +52,12 @@ function changeDimensions() {
 }
 
 
-function getRandomHexColour() {
-    const N_HEX_VALUES = 16777216;
-    const randomHexValue = Math.floor(Math.random()*N_HEX_VALUES);
-    const randomHexColour = randomHexValue.toString(16);
+function getRandomColour() {
+    const RGB_MAX = 256;
+    const r = Math.floor(Math.random() * RGB_MAX);
+    const g = Math.floor(Math.random() * RGB_MAX);
+    const b = Math.floor(Math.random() * RGB_MAX);
+    const rgb = `rgb(${r}, ${g}, ${b})`;
 
-    return randomHexColour;
+    return rgb;
 }
