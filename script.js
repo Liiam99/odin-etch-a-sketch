@@ -32,7 +32,11 @@ function drawGrid(dim) {
 
 function changeSquareColour(e) {
     const squareDiv = e.target;
-    squareDiv.style.backgroundColor = 'black';
+    const randomColour = getRandomHexColour();
+
+    if (!squareDiv.style.backgroundColor) {
+        squareDiv.style.backgroundColor = `#${randomColour}`;
+    };
 }
 
 
@@ -46,4 +50,13 @@ function changeDimensions() {
     const gridDiv = document.querySelector('.grid');
     gridDiv.innerHTML = '';
     drawGrid(new_dim);
+}
+
+
+function getRandomHexColour() {
+    const N_HEX_VALUES = 16777216;
+    const randomHexValue = Math.floor(Math.random()*N_HEX_VALUES);
+    const randomHexColour = randomHexValue.toString(16);
+
+    return randomHexColour;
 }
