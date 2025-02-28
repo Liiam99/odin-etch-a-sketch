@@ -19,7 +19,7 @@ body {
     flex-direction: column;
     height: 100vh;
     width: 100vh;
-    border: 1px solid red;
+    border: 1px solid black;
 }
 
 .row {
@@ -28,6 +28,5 @@ body {
 }
 
 .square {
-    border: 1px solid red;
     flex: auto;
 }
