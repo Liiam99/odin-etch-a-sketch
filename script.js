@@ -18,8 +18,7 @@ function drawGrid(dim) {
             const squareDiv = document.createElement('div');
             squareDiv.classList.add('square');
 
-            squareDiv.addEventListener('mouseover', changeSquareColour,
-                                       {once: true});
+            squareDiv.addEventListener('mouseover', changeSquareColour);
 
             rowDiv.appendChild(squareDiv);
         }
@@ -35,7 +34,17 @@ function changeSquareColour(e) {
     const squareDiv = e.target;
     const randomColour = getRandomColour();
 
-    squareDiv.style.backgroundColor = randomColour;
+    // First interaction.
+    if (!squareDiv.style.backgroundColor) {
+        squareDiv.style.backgroundColor = randomColour;
+    }
+
+    squareDiv.style.opacity = +squareDiv.style.opacity + 0.1;
+
+    // Last interaction.
+    if (+squareDiv.style.opacity == 1) {
+        squareDiv.removeEventListener('mouseover', changeSquareColour);
+    }
 }
 
 
